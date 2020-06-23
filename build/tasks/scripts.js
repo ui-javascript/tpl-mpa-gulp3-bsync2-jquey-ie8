@@ -13,7 +13,8 @@ gulp.task('compileJS', function () {
         .pipe(plumber())
         // 合并同一目录下的所有文件
         // .pipe(concat({ext: '.js'}))
-        // .pipe(babel())
+        // 开发环境直接转换Ecma
+        .pipe(babel())
         .pipe(gulp.dest(`${config.common.staticDir}/js`))
 });
 

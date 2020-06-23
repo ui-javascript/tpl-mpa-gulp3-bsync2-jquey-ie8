@@ -112,7 +112,7 @@ gulp.task('03-build-dist', function () {
 
         // 'libsGenerate',
         // 'optimizeImages',
-        // 'copyImages',
+        'copyImages',
 
         // 3.文件编译
         ['distHTML', 'distLess'],

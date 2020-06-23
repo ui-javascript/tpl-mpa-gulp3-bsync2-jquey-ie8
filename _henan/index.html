@@ -5,17 +5,225 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
+  <link href="https://cdn.bootcss.com/element-ui/2.8.2/theme-chalk/index.css" rel="stylesheet">
   <link rel="stylesheet" href="/static/css/_style.css">
+
 </head>
 <body>
 
-  <div class="homeContent">
-    <div class="homeContent_header relative">
-      <div class="btn-login absolute" style="right: 10px;"></div>
-    </div>
-  </div>
+<div id="app" class="homeContent">
+  <div class="homeContent_header relative" style="top: 0;">
 
-  <script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="/static/js/index.js"></script>
+    <div class="homeContent_logo logo absolute ml-30" style="top: 20px;">
+
+    </div>
+
+    <div class="homeContent_links absolute" style="right: 270px;top: 24px;">
+      <a href="/">首页</a>
+      <a href="#competition_notice">竞赛通知</a>
+      <a href="#competition_content">竞赛内容</a>
+      <a href="#competition_process">参赛流程</a>
+      <a href="#home">参赛项目</a>
+      <a href="#award_recognition">奖项表彰</a>
+    </div>
+
+    <div class="homeContent_btn absolute" style="right: 30px;top: 5px;">
+      <div class="btn-reg inline-block" @click="dialogVisible = true"></div>
+      <div class="btn-login inline-block"></div>
+    </div>
+
+    <div class="container relative">
+      <!-- 锚点 -->
+      <div id="competition_notice" class="absolute debug container" style="top: 590px;"></div>
+      <div id="competition_content" class="absolute debug container" style="top: 1420px;"></div>
+      <div id="competition_process" class="absolute debug container" style="top: 2260px;"></div>
+      <div id="award_recognition" class="absolute debug container" style="top: 3130px;"></div>
+
+      <!-- pdf下载按钮 -->
+      <div class="btn-pdf absolute" style="top: 1240px;left: 85px;"></div>
+
+      <!-- 附件下载链接 -->
+      <div class="homeContent_dl absolute debug" style="width: 610px; top: 1130px; right: 0px;">
+        <div class="homeContent_dl_item clearfix">
+          <span>河南省房屋建筑工程建设项目“大干一百天”立功劳动竞赛参赛报名表</span>
+          <div class="homeContent_dl_btn btn-dl fr"></div>
+        </div>
+
+        <div class="homeContent_dl_item clearfix">
+          <span>河南省房屋建筑工程建设项目“大干一百天”立功劳动竞赛先进个人参赛申报表</span>
+          <div class="homeContent_dl_btn btn-dl fr"></div>
+        </div>
+        <div class="homeContent_dl_item clearfix">
+          <span>河南省房屋建筑工程建设项目“大干一百天”立功劳动竞赛评价表</span>
+          <div class="homeContent_dl_btn btn-dl fr"></div>
+        </div>
+      </div>
+
+      <div class="homeContent_reg absolute debug w-full" style="top: 2810px;">
+        <div id="home_content_reg" class="relative">
+          <div class="js-tab-btn tab-btn-reg absolute" style="z-index: 100;"></div>
+          <div class="js-tab-btn tab-btn-submit absolute" style="z-index: 100;top: 62px;"></div>
+          <div class="js-tab-btn tab-btn-bz absolute" style="z-index: 100;top: 115px;"></div>
+
+          <div class="js-tab tab-reg absolute" style="top: 7px;z-index: 10;"></div>
+          <div class="js-tab tab-submit absolute hide" style="top: -20px;left: -4px;z-index: 10;"></div>
+          <div class="js-tab tab-bz absolute hide" style="top: -16px;z-index: 10;left: 1px;"></div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <el-dialog
+      title="用户注册"
+      :close-on-click-modal="false"
+      :close-on-press-escape="false"
+      :visible.sync="dialogVisible"
+      width="500px">
+
+      <el-form
+        ref="loginForm"
+        :model="loginForm"
+        :rules="loginRules"
+        label-width="80px"
+        autocomplete="on"
+        label-position="right"
+      >
+
+        <el-form-item prop="mobileNo" label="账号" style="margin-top: 20px;">
+
+          <el-input
+            ref="username"
+            v-model.trim="loginForm.mobileNo"
+            placeholder="请输入您的手机号"
+            name="username"
+            type="text"
+            tabindex="1"
+            autocomplete="on"
+          />
+        </el-form-item>
+
+        <div class="relative">
+          <el-form-item prop="verifyCode" label="验证码">
+
+            <el-input
+              ref="username"
+              v-model.trim="loginForm.verifyCode"
+              style="width: 220px"
+              placeholder="请输入手机验证码"
+              name="username"
+              type="text"
+              tabindex="1"
+              autocomplete="on"
+            />
+
+          </el-form-item>
+
+          <div class="inline-block absolute" style="top: 0; width: 110px;right: 13px;">
+            <el-button
+              type="primary"
+              class="btnVerify tc"
+              :disabled="!loginForm.mobileNo || countdown > 0"
+              @click.native.prevent="handleSendVerifyCode"
+            >
+              {{ (countdown > 0) ? `倒计时${countdown}s` : '发送验证码' }}
+            </el-button>
+          </div>
+
+        </div>
+
+
+        <el-form-item prop="password" label="密码">
+
+          <el-input
+            :key="passwordType"
+            ref="password"
+            v-model.trim="loginForm.password"
+            :type="passwordType"
+            placeholder="请输入密码(6-12位)"
+            name="password"
+            tabindex="2"
+            autocomplete="on"
+            @blur="capsTooltip = false"
+          />
+
+        </el-form-item>
+
+        <el-form-item prop="passwordAgain" label="确认密码">
+
+          <el-input
+            ref="password"
+            v-model.trim="loginForm.passwordAgain"
+            :type="passwordType"
+            placeholder="请输入确认密码"
+            name="password"
+            tabindex="2"
+            autocomplete="on"
+            @blur="capsTooltip = false"
+          />
+
+        </el-form-item>
+
+        <!--      <el-form-item prop="name" label="姓名">
+                <el-input
+                  ref="username"
+                  v-model.trim="loginForm.name"
+                  placeholder="您的姓名"
+                  name="username"
+                  type="text"
+                  tabindex="1"
+                  autocomplete="on"
+                />
+              </el-form-item>
+
+              <el-form-item prop="company" label="单位">
+                <el-input
+                  ref="username"
+                  v-model.trim="loginForm.company"
+                  placeholder="所在单位"
+                  name="username"
+                  type="text"
+                  tabindex="1"
+                  autocomplete="on"
+                />
+              </el-form-item>-->
+
+        <div class="tc">
+          <div>
+            <el-button
+              :loading="loading"
+              type="primary"
+              class="btnRegister inline-block"
+              style="width:170px;height: 50px;"
+              @click.native.prevent="handleRegister"
+            >注册
+            </el-button>
+          </div>
+
+          <!--         <p class="color-orange" style="margin-top: 30px;font-size: 14px;">
+                     注册开放时间：2020年3月1日 - 2020年3月31日
+                   </p>-->
+
+        </div>
+
+      </el-form>
+
+
+      </span>
+
+    </el-dialog>
+
+
+  </div>
+</div>
+
+<script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/element-ui/2.8.2/index.js"></script>
+<script src="https://cdn.bootcss.com/element-ui/2.8.2/locale/zh-CN.min.js"></script>
+<script src="/static/js/index.js"></script>
+
 </body>
 </html>

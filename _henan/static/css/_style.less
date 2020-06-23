@@ -2,12 +2,15 @@
 @import "utils.less";
 @import "sprite.less";
 
-
+@color-orange: #eeb617;
+@color-pink: #c9628c;
 
 body {
-  background: url("/static/images/bg.png");
-  background-size: cover;
+  background: url("/static/images/bg.png") no-repeat center top;
+  //background-size: contain;
   height: 3938px;
+  min-width: 1084px;
+  overflow-x: auto;
 }
 
 .container {
@@ -18,15 +21,165 @@ body {
 .homeContent {
 
   &_header {
-    position: absolute;
-    top: 0;
+    //position: absolute;
+    //top: 0;
+  }
+
+  &_links {
+    a {
+      color: #fff;
+      font-size: 18px;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:hover {
+        color: @color-orange;
+      }
+
+    }
+
+  }
+
+  &_dl {
+
+    &_item {
+
+      padding-left: 10px;
+
+
+      span {
+        .btn();
+        .txt-elli();
+        display: inline-block;
+        width: 580px;
+      }
+
+      color: #fff;
+      height: 40px;
+      line-height: 40px;
+    }
+
+    &_btn {
+      position: relative;
+      top: 7px;
+    }
+
+  }
+
+
+
+  &_reg {
+
   }
 
 }
 
+
+.btn() {
+  cursor: pointer;
+}
+
 .btn-login {
+  .btn();
   .sprite(@btn-login);
+}
+
+.btn-reg {
+  .btn();
+  .sprite(@btn-reg);
+}
+
+.btn-pdf {
+  .btn();
+  .sprite(@btn-pdf);
+}
+
+.btn-dl {
+  .btn();
+  .sprite(@btn-dl);
+}
+
+.tab-reg {
+  .sprite(@tab-reg);
+}
+
+.tab-bz {
+  .sprite(@tab-bz);
+}
+
+.tab-submit {
+  .sprite(@tab-submit);
+}
+
+.tab-btn-reg {
+  .sprite(@tab-btn-reg);
+}
+
+.tab-btn-bz {
+  .sprite(@tab-btn-bz);
+}
+
+.tab-btn-submit {
+  .sprite(@tab-btn-submit);
+}
+
+
+.tab-reg {
+
+}
+
+.logo {
+  .sprite(@logo);
+}
+
+
+.debug {
+  //border: 2px solid red;
+  //height: 100px;
 }
 
 
 
+.btnRegister {
+  background-color: @color-pink;
+  color: #fff;
+  border: none;
+  padding-right: 10px;
+  border-radius: 20px;
+  font-size: 20px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: @color-pink;
+  }
+
+  span {
+    letter-spacing: 10px;
+  }
+}
+
+.btnVerify {
+  background-color: @color-pink;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  border-radius: 20px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: @color-pink;
+  }
+
+  &.is-disabled {
+    background-color: @color-pink!important;
+    //border-color: none;
+    cursor: not-allowed;
+  }
+}
