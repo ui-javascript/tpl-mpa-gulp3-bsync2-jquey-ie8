@@ -1,6 +1,32 @@
-p {
-  color: red;
+// 引入雪碧图
+@import "utils.less";
+@import "sprite.less";
+
+
+
+body {
+  background: url("/static/images/bg.png");
+  background-size: cover;
+  height: 3938px;
 }
 
-// 引入雪碧图
-@import "sprite"
+.container {
+  width: 1084px;
+  margin: 0 auto;
+}
+
+.homeContent {
+
+  &_header {
+    position: absolute;
+    top: 0;
+  }
+
+}
+
+.btn-login {
+  .sprite(@btn-login);
+}
+
+
+
