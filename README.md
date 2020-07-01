@@ -1,17 +1,18 @@
 # README
 
-- ui-exam-portal/_henan目录下是主要代码
+- ui-exam-portal/_henan目录下是主要的代码
 - 安装: cnpm install
 - 启动: npm run dev:henan
 - 打包: npm run build:henan --> static与templates目录下就是打包的文件
 - 原型: https://modao.cc/app/c32c90b9b1051812c49c2437b3f2f0c522b98382?simulator_type=device&sticky#screen=skbqdfb2m45xgv7
+- 参考页面: http://www.bim.vip/active/2020/mei/detail.aspx?id=57326
 
 # 前端技术栈
 
 - gulp3
 - browserSync 
-- jquery 
-- layui(IE8+)
+- jquery + layui
+- vue2 + elementui
 
 ---
 

@@ -25,7 +25,8 @@ gulp.task('distJS', function () {
         .pipe(plumber())
         // 合并同一目录下的所有文件
         // .pipe(concat({ext: '.js'}))
-        .pipe(stripDebug())
+        // 去掉debug等
+        // .pipe(stripDebug())
         .pipe(babel())
         .pipe(uglify())
         .pipe(gulp.dest(`${config.common.staticDir}/js`))

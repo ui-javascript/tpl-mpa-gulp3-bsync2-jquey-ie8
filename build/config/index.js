@@ -12,10 +12,10 @@ if (process.env.SYS_NAME) {
 // 公共配置
 exports.common = {
     // 这两个文件随文件夹结构调整
-    staticDir: './static',
+    staticDir: './dist/static',
     // cdnDir: 'http://47.100.99.127:5000/static',
     cdnDir: './public',
-    templatesDir: './templates',
+    templatesDir: './dist/templates',
     sysName: sysName
 }
 
@@ -81,12 +81,8 @@ exports.prod = {
     ],
 
     // 部署
-    // host: '66.42.54.231',
-    host: '129.204.193.178',
-    // username: 'admin',
-    // username: 'administrator',
+    host: '129.204.193.xxx',
     username: 'root',
-    // password: '我不告诉你,除非做我女朋友',
     password: '123456',
     remotePath: '/opt/gulp'
 }

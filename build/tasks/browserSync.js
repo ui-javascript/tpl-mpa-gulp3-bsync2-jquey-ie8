@@ -5,10 +5,12 @@ const reload = browserSync.reload
 
 
 let _routes = {
-    '/static/plugins': `${config.common.cdnDir}/plugins`,
-    '/static/vendor': `${config.common.cdnDir}/vendor`,
-    '/static/fonts': `${config.common.cdnDir}/fonts`,
+    // 如果启动了搬运静态文件, 这里就不需要配置
+    // '/static/plugins': `${config.common.cdnDir}/plugins`,
+    // '/static/vendor': `${config.common.cdnDir}/vendor`,
+    // '/static/fonts': `${config.common.cdnDir}/fonts`,
     // '/static/tpl': `${config.common.cdnDir}/assets/tpl`,
+
     '/static': `${config.common.staticDir}`,
 }
 

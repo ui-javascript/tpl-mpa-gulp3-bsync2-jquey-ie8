@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>参赛项目</title>
+
+  <link href="https://cdn.bootcss.com/element-ui/2.8.2/theme-chalk/index.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.layuicdn.com/layui-v2.4.5/css/layui.css">
+<!--  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/layui/2.4.5/css/layui.css">-->
+  <link rel="stylesheet" href="/static/css/_style.css">
+
+  <!--[if lt IE 9]>
+  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+
+<div class="homeContent detailsContent">
+  <div class="homeContent_header relative" style="top: 0;">
+
+    <div class="homeContent_logo logo absolute ml-30" style="top: 20px;"></div>
+
+    <div class="homeContent_links absolute" style="right: 270px;top: 24px;">
+      <a href="./index.html">首页</a>
+      <a href="./index.html#competition_notice">竞赛通知</a>
+      <a href="./index.html#competition_content">竞赛内容</a>
+      <a href="./index.html#competition_process">参赛流程</a>
+      <a class="is-hover" href="./project.html">参赛项目</a>
+      <a href="./index.html#award_recognition">奖项表彰</a>
+    </div>
+
+    <div class="homeContent_btn absolute" style="right: 30px;top: 5px;">
+      <div id="btn_reg" class="btn-reg inline-block relative" style="top: -5px;"></div>
+      <div class="btn-login inline-block relative" style="top: -10px;"></div>
+    </div>
+  </div>
+
+  <!-- 内容区 -->
+  <div class="container">
+
+    <div class="detailsContent_tip debug" style="margin-top: 560px;">
+      <div class="detailsContent_tip_item">1、投票截止到11月XX日晚23：59</div>
+      <div class="detailsContent_tip_item">2、再次提醒：每一票都有详细记录，请勿刷票。刷票部分将于6月18日一起处理。刷票部分将会直接扣掉。</div>
+      <div class="detailsContent_tip_item">3、11月XX日 14:00 公布最终结果。</div>
+    </div>
+
+    <div class="detailsContent_search w-full" style="margin-top: 40px;">
+
+      <div class="clearfix relative">
+        <div class="w-full inline-block" style="padding-right: 130px;" >
+          <input id="keywords_input" class="layui-input inline-block" type="text" name="title" required lay-verify="required" placeholder="可根据项目名称和单位名称进行搜索" autocomplete="off">
+        </div>
+
+        <button id="search_btn" type="button" class="layui-btn absolute" style="right: 0" lay-submit="" lay-filter="demo1">
+          <i class="layui-icon">&#xe615;</i> 添加查询</button>
+      </div>
+
+      <div id="view_list" class="mt-50 detailsContent_search_content">
+        <!--  渲染示例 @demo -->
+     <!--         <div class="detailsContent_card layui-row">
+                <div class="detailsContent_card_item layui-col-md4">
+                  <div class="detailsContent_card_item_img">
+                    <img src="http://active.bim.vip/images/jp/20200609/20200609122655422837.jpg" alt="">
+                  </div>
+                  <div class="detailsContent_card_item_title">建筑工程</div>
+                </div>
+              </div>-->
+      </div>
+
+      <!--  分页  -->
+      <div class="w-full mt-20 tc">
+        <div id="details_pagination" class="inline-block">
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+</div>
+
+<!-- 引入注册公共片段 -->
+@@include("_reg.inc")
+
+
+<script id="tpl_list" type="text/html">
+  <div class="detailsContent_card layui-row">
+    {{#  layui.each(d, function(index, item){ }}
+    <div class="detailsContent_card_item layui-col-md6">
+      <a target="_blank" href="./project-detail.html?id={{item.EI_Guid}}">
+        <div class="detailsContent_card_item_img">
+          <img src="{{ item.EA_AttachPath }}" alt="" />
+        </div>
+      </a>
+      <div class="detailsContent_card_item_title">{{ item.EI_ProjectName }}</div>
+    </div>
+    {{#  }) }}
+  </div>
+</script>
+
+
+<script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://www.layuicdn.com/layui-v2.4.5/layui.js"></script>
+<!--<script src="https://cdn.bootcdn.net/ajax/libs/layui/2.4.5/layui.min.js"></script>-->
+
+<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/element-ui/2.8.2/index.js"></script>
+<script src="https://cdn.bootcss.com/element-ui/2.8.2/locale/zh-CN.min.js"></script>
+
+<script src="/static/js/_common.js"></script>
+<script src="/static/js/project.js"></script>
+
+</body>
+</html>

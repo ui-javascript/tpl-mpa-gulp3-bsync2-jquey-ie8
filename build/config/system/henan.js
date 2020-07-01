@@ -3,6 +3,8 @@
 
 exports.dev = {
 
+    port: 8888,
+
     // 设置监听
     // stylesWatchFiles: [
     //     `./src/styles/components/**/*.less`,

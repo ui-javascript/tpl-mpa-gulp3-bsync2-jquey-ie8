@@ -80,9 +80,12 @@ gulp.task('01-build-dev', function () {
 
         // 'optimizeImages',
         'copyImages',
+      'copyCDN',
 
         // 3.文件编译
-        ['compileHTML', 'compileLess', 'compileJS'],
+        [
+          'compileHTML',
+          'compileLess', 'compileJS'],
 
         // 4.开启浏览器同步
         'devSync'
@@ -120,6 +123,7 @@ gulp.task('03-build-dist', function () {
         ['distJS'],
 
         // 不要忘记搬运cdn/静态资源部分 @todo
+      'copyCDN',
 
         // 'zip',
         // 'distSync',

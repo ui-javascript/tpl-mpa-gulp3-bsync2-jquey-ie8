@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>项目详情页</title>
+
+  <link href="https://cdn.bootcss.com/element-ui/2.8.2/theme-chalk/index.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.layuicdn.com/layui-v2.4.5/css/layui.css">
+  <!--  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/layui/2.4.5/css/layui.css">-->
+<!--  <link href="/static/plugins/jplayer/dist/skin/blue.monday/css/jplayer.blue.monday.min.css" rel="stylesheet"/>-->
+  <link rel="stylesheet" href="/static/css/_style.css">
+
+  <!--[if lt IE 9]>
+  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+</head>
+<body>
+
+
+<div class="homeContent detailsContent projectDetail">
+  <div class="homeContent_header relative" style="top: 0;">
+
+    <div class="homeContent_logo logo absolute ml-30" style="top: 20px;"></div>
+
+    <div class="homeContent_links absolute" style="right: 270px;top: 24px;">
+      <a href="./index.html">首页</a>
+      <a href="./index.html#competition_notice">竞赛通知</a>
+      <a href="./index.html#competition_content">竞赛内容</a>
+      <a href="./index.html#competition_process">参赛流程</a>
+      <a class="is-hover" href="./project.html">参赛项目</a>
+      <a href="./index.html#award_recognition">奖项表彰</a>
+    </div>
+
+    <div class="homeContent_btn absolute" style="right: 30px;top: 5px;">
+      <div id="btn_reg" class="btn-reg inline-block relative" style="top: -5px;"></div>
+      <div class="btn-login inline-block relative" style="top: -10px;"></div>
+    </div>
+  </div>
+
+  <!-- 内容区 -->
+  <div class="container" id="view_info">
+    <!--  此区域将被填充  -->
+  </div>
+
+
+</div>
+
+<!-- 引入注册公共片段 -->
+@@include("_reg.inc")
+
+
+<script id="tpl_info" type="text/html">
+
+  <div class="projectDetail_info shadow-card" style="margin-top: 520px;">
+    <div class="projectDetail_info_title">
+      {{ d.EI_ProjectName }}
+    </div>
+    <div class="projectDetail_info_company">
+      {{ d.EI_Enterprice }}
+    </div>
+    <div class="projectDetail_info_tip">
+      项目介绍
+    </div>
+    <div class="projectDetail_info_description">
+      {{ d.EI_Intro }}
+    </div>
+  </div>
+
+  {{# if (d.pic != null) { }}
+  <div class="detailsContent_search_content mt-50">
+    <div class="detailsContent_search_title">图片展示</div>
+    <div class="detailsContent_card layui-row">
+      {{#  layui.each(d.pic, function(index, item){ }}
+      <div class="detailsContent_card_item layui-col-md6">
+        <div class="detailsContent_card_item_img">
+          <img src="{{ item.EA_AttachPath }}" alt="" />
+        </div>
+        <div class="detailsContent_card_item_title">{{ item.EA_AttachName }}</div>
+      </div>
+      {{#  }) }}
+    </div>
+  </div>
+  {{# } }}
+
+  {{# if (d.video != null) { }}
+    <div class="projectDetail_video shadow-card mt-30">
+    <div class="projectDetail_video_title">视频展示</div>
+
+    <div class="projectDetail_video_player mt-20">
+
+      {{#  layui.each(d.video, function(index, item){ }}
+        <video class="w-full" src="{{item.EA_AttachPath}}" controls=""></video>
+      {{#  }) }}
+
+      <!--   jplayer @demo     -->
+      <!--        <div id="jp_container_1" class="jp-video" style="width: 1000px" role="application" aria-label="media player">
+      <div class="jp-type-single">
+      <div id="jquery_jplayer_1" class="jp-jplayer"></div>
+      <div class="jp-gui">
+      <div class="jp-video-play">
+      <button class="jp-video-play-icon" role="button" tabindex="0">play</button>
+      </div>
+      <div class="jp-interface">
+      <div class="jp-progress">
+      <div class="jp-seek-bar">
+      <div class="jp-play-bar"></div>
+      </div>
+      </div>
+      <div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+    <div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+    <div class="jp-controls-holder">
+      <div class="jp-controls">
+      <button class="jp-play" role="button" tabindex="0">play</button>
+      <button class="jp-stop" role="button" tabindex="0">stop</button>
+      </div>
+      <div class="jp-volume-controls">
+      <button class="jp-mute" role="button" tabindex="0">mute</button>
+      <button class="jp-volume-max" role="button" tabindex="0">max volume</button>
+    <div class="jp-volume-bar">
+      <div class="jp-volume-bar-value"></div>
+      </div>
+      </div>
+      <div class="jp-toggles">
+      <button class="jp-repeat" role="button" tabindex="0">repeat</button>
+      <button class="jp-full-screen" role="button" tabindex="0">full screen</button>
+    </div>
+    </div>
+    <div class="jp-details">
+      <div class="jp-title" aria-label="title">&nbsp;</div>
+    </div>
+    </div>
+    </div>
+    <div class="jp-no-solution">
+      <span>无法播放</span>
+    你需要安装flashplayer，地址：<a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+    </div>
+    </div>
+    </div>-->
+
+    </div>
+      {{# } }}
+  </div>
+
+</script>
+
+
+<script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://www.layuicdn.com/layui-v2.4.5/layui.js"></script>
+<!--<script src="https://cdn.bootcdn.net/ajax/libs/layui/2.4.5/layui.min.js"></script>-->
+<!--<script src="/static/plugins/jplayer/dist/jplayer/jquery.jplayer.min.js"></script>-->
+
+<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/element-ui/2.8.2/index.js"></script>
+<script src="https://cdn.bootcss.com/element-ui/2.8.2/locale/zh-CN.min.js"></script>
+
+<script src="/static/js/_common.js"></script>
+<script src="/static/js/project-detail.js"></script>
+
+</body>
+</html>

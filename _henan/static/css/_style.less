@@ -1,24 +1,25 @@
+@import "variables";
+@import "utils";
 // 引入雪碧图
-@import "utils.less";
-@import "sprite.less";
+@import "sprite";
+@import "layui-theme";
 
-@color-orange: #eeb617;
-@color-pink: #c9628c;
 
-body {
-  background: url("/static/images/bg.png") no-repeat center top;
+[v-cloak] {
+  display: none;
+}
+
+// 覆盖宽度
+.container {
+  width: 1084px;
+}
+
+.homeContent {
+  background: url("/static/images/bg.jpg") no-repeat center top;
   //background-size: contain;
   height: 3938px;
   min-width: 1084px;
   overflow-x: auto;
-}
-
-.container {
-  width: 1084px;
-  margin: 0 auto;
-}
-
-.homeContent {
 
   &_header {
     //position: absolute;
@@ -37,8 +38,10 @@ body {
         margin-left: 0;
       }
 
-      &:hover {
-        color: @color-orange;
+      &:hover,
+      &.is-hover {
+        color: @color-yellow;
+        font-weight: bold;
       }
 
     }
@@ -70,7 +73,6 @@ body {
     }
 
   }
-
 
 
   &_reg {
@@ -144,9 +146,8 @@ body {
 }
 
 
-
 .btnRegister {
-  background-color: @color-pink;
+  background-color: @color-blue;
   color: #fff;
   border: none;
   padding-right: 10px;
@@ -156,7 +157,7 @@ body {
   &:hover,
   &:active,
   &:focus {
-    background-color: @color-pink;
+    background-color: @color-blue;
   }
 
   span {
@@ -165,7 +166,7 @@ body {
 }
 
 .btnVerify {
-  background-color: @color-pink;
+  background-color: @color-blue;
   color: #fff;
   border: none;
   font-size: 16px;
@@ -174,12 +175,171 @@ body {
   &:hover,
   &:active,
   &:focus {
-    background-color: @color-pink;
+    background-color: @color-blue;
   }
 
   &.is-disabled {
-    background-color: @color-pink!important;
+    background-color: @color-blue !important;
     //border-color: none;
     cursor: not-allowed;
+  }
+}
+
+
+.detailsContent {
+  background: url("/static/images/bg-detail-slim.png") no-repeat center top;
+  //background-size: contain;
+  min-height: 719px;
+  height: unset;
+  min-width: 1084px;
+  overflow-x: auto;
+  padding-bottom: 40px;
+
+  &_tip {
+    color: #fff;
+    font-size: 16px;
+
+    &_item {
+
+    }
+  }
+
+
+  &_search {
+
+    &_content {
+      box-shadow: 0 0px 18px 0px rgba(7, 17, 27, 0.08);
+      padding: 20px;
+      color: #333;
+    }
+
+    &_title {
+      font-weight: bold;
+      line-height: 30px;
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+  }
+
+  &_card {
+    //padding-top: 10px;
+    //padding-bottom: 10px;
+    //margin: -10px;
+    background-color: #fff;
+
+    //padding: 10px 20px 20px 20px;
+    cursor: pointer;
+
+    &_item {
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-top: 20px;
+      //margin-left: -5px;
+      //margin-right: -5px;
+
+      overflow: hidden;
+      position: relative;
+      //width: 100px;
+      //height: 100px;
+      //width: 100%;
+
+
+      &_img {
+        overflow: hidden;
+        //min-height: 150px;
+        height: 294px;
+        border: 1px solid #ddd;
+        border-radius: 2px;
+
+
+        img {
+          display: block;
+          width: 100%;
+          max-width: 100%;
+          min-width: 100%;
+          transition: all linear 0.2s;
+
+          &:hover {
+            cursor: pointer;
+            transform: scale(1.1);
+          }
+
+        }
+      }
+
+
+
+      &_title {
+        //color: #fff;
+        text-align: center;
+        font-size: 16px;
+        //position: absolute;
+        //bottom: 0;
+        width: 100%;
+        margin-top: 20px;
+
+        font-size: 16px;
+        //line-height: 24px;
+        color: #666;
+      }
+
+    }
+
+  }
+}
+
+
+.shadow-card {
+  box-shadow: 0 0px 18px 0px rgba(7, 17, 27, 0.08);
+  padding: 20px;
+  color: #333;
+  background-color: #fff;
+  border-radius: 3px;
+}
+
+.projectDetail {
+
+  &_info {
+
+    &_title {
+      font-weight: bold;
+      line-height: 30px;
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+
+    &_company {
+      font-size: 16px;
+      line-height: 24px;
+      color: #666;
+    }
+
+    &_tip {
+      font-size: 20px;
+      height: 30px;
+      line-height: 30px;
+      margin: 10px 0;
+    }
+
+    &_description {
+      font-size: 16px;
+      line-height: 24px;
+      color: #666;
+    }
+  }
+
+  &_video {
+
+    &_title {
+      font-weight: bold;
+      line-height: 30px;
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+
+    &_player {
+
+    }
+
   }
 }
