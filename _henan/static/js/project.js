@@ -11,8 +11,7 @@ layui.use([
   let laypage = layui.laypage
   let laytpl = layui.laytpl
 
-  const url = commonURL + '/PMSoft.AjaxHttpHandler.ExamTest.ashx'
-  // const url = '/json/mock.json'
+  const url = '/mock/project.json'
 
   var pagination = {
     curr: 1,

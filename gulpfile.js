@@ -80,7 +80,7 @@ gulp.task('01-build-dev', function () {
 
         // 'optimizeImages',
         'copyImages',
-      'copyCDN',
+        'copyCDN',
 
         // 3.文件编译
         [

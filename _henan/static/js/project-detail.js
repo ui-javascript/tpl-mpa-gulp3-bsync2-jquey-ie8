@@ -7,7 +7,7 @@ layui.use([
   const layer = layui.layer
   let laytpl = layui.laytpl
 
-  const url = commonURL + "/PMSoft.AjaxHttpHandler.ExamDetails.ashx"
+  const url = '/mock/project-detail.json'
 
   // 2) 注册事件 ====
   /**
