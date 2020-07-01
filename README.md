@@ -3,9 +3,7 @@
 - ui-exam-portal/_henan目录下是主要的代码
 - 安装: cnpm install
 - 启动: npm run dev:henan
-- 打包: npm run build:henan --> static与templates目录下就是打包的文件
-- 原型: https://modao.cc/app/c32c90b9b1051812c49c2437b3f2f0c522b98382?simulator_type=device&sticky#screen=skbqdfb2m45xgv7
-- 参考页面: http://www.bim.vip/active/2020/mei/detail.aspx?id=57326
+- 打包: npm run build:henan --> dist目录下就是打包的文件
 
 # 前端技术栈
 
@@ -16,7 +14,7 @@
 
 ---
 
-    
+
 # 目录结构
 
 ```
@@ -49,7 +47,7 @@
 │          └─mumuy
 ├─static 编译生成的静态资源(打包的话也包括CDN)
 └─templates
-```  
+```
 
 ![项目结构说明](__doc/category.png)  
 
@@ -72,7 +70,7 @@
 # 使用说明
 
 - 工程命名
-    
+  
 ```js 
 // 项目命名
 以下划线作为开头
@@ -100,7 +98,7 @@ build/config下新建工程同名文件
 
 - 不要jade、hbs这些偏僻技术，直接html/jsx
 - 如果后台视图为JSP/Freemarker等
-    
+  
     - 禁用所有与html有关任务
     - 后台调整资源指向
     
@@ -111,7 +109,7 @@ spring:
     static-path-pattern: /static/**
   resources:
     static-locations: classpath:/static/, classpath:/public
-```     
+```
 
 # 引用html片段/cdn @deprecated
 
@@ -127,7 +125,7 @@ spring:
 - `_project/static/js/*.js`          -> 缩编/ES6语法转译
 - `_project/static/css/_*.less`      -> autoprefix/less支持
 - `_project/static/images/(_sprite)` -> 图片压缩/雪碧图
-    
+  
 ```jsx
 // 引入资源如下 
 <script src="/static/js/es6.js"></script>
@@ -159,7 +157,7 @@ _style.less中@import "sprite"
 // 3. 重启 @attention
 sprite -> dev(需要重启)
 合成的雪碧图会拷贝到编译目录
-```   
+```
 
 # 字体子集化
 
