@@ -2,7 +2,7 @@ const config = require('../config/index')
 const gulp = require('gulp')
 const browserSync = require('browser-sync').create()
 const reload = browserSync.reload
-
+const runSequence = require('run-sequence')
 
 let _routes = {
     // 如果启动了搬运静态文件, 这里就不需要配置
@@ -32,20 +32,24 @@ gulp.task('devSync', function () {
         // startPath: "index.html"
     });
 
-    // 注册监听时间 =========
-    // fileInclude + browserSync https://www.cnblogs.com/yjzhu/archive/2017/02/27/6474854.html
-
-    // 公共开发环境资源变动(不一定变动,需要优化 @todo)
-    gulp.watch(`${config.dev.devDir}/**/*.{css,less,inc,js,json}`, ['compileHTML']).on('change', reload);
-
-    // 相对路径资源变动
-    gulp.watch(`${config.dev.pagesDir}/**/*.{html,inc}`,['compileHTML']).on('change', reload);
-    gulp.watch(`${config.dev.pagesDir}/**/*.{css,js,json}`, ['copyHTMLLeftChanged']).on('change', reload);
-
-    // js, less变动
-    gulp.watch(`${config.dev.scriptsDir}/**/*.js`, ['compileJS']).on('change', reload);
-    gulp.watch(config.dev.stylesWatchFiles, ['compileLess']).on('change', reload);
+    runSequence('watchChange')
 });
+
+gulp.task('watchChange', function () {
+  // 注册监听时间 =========
+  // fileInclude + browserSync https://www.cnblogs.com/yjzhu/archive/2017/02/27/6474854.html
+
+  // 公共开发环境资源变动(不一定变动,需要优化 @todo)
+  gulp.watch(`${config.dev.devDir}/**/*.{css,less,inc,js,json}`, ['compileHTML']).on('change', reload);
+
+  // 相对路径资源变动
+  gulp.watch(`${config.dev.pagesDir}/**/*.{html,inc}`,['compileHTML']).on('change', reload);
+  gulp.watch(`${config.dev.pagesDir}/**/*.{css,js,json}`, ['copyHTMLLeftChanged']).on('change', reload);
+
+  // js, less变动
+  gulp.watch(`${config.dev.scriptsDir}/**/*.js`, ['compileJS']).on('change', reload);
+  gulp.watch(config.dev.stylesWatchFiles, ['compileLess']).on('change', reload);
+})
 
 gulp.task('distSync', function () {
     browserSync.init({

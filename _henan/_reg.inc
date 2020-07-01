@@ -7,6 +7,7 @@
     :visible.sync="dialogVisible"
     width="500px">
 
+
     <el-form
       ref="loginForm"
       :model="loginForm"
@@ -17,6 +18,7 @@
     >
 
       <el-form-item prop="enterpriceName" label="企业名称">
+
 
         <el-input
           v-model.trim="loginForm.enterpriceName"
@@ -61,10 +63,10 @@
           <el-button
             type="primary"
             class="btnVerify tc"
-            :disabled="!loginForm.mobileNo || countdown > 0"
+            :disabled="shouldDisableVerifyCode"
             @click.native.prevent="handleSendVerifyCode"
           >
-            {{ (countdown > 0) ? `倒计时${countdown}s` : '发送验证码' }}
+            {{ getVerifyCodeTip() }}
           </el-button>
         </div>
 
@@ -113,13 +115,11 @@
           >注册</el-button>
         </div>
 
-        <!--         <p class="color-orange" style="margin-top: 30px;font-size: 14px;">
-                   注册开放时间：2020年3月1日 - 2020年3月31日
-                 </p>-->
-
       </div>
 
     </el-form>
+
+
   </el-dialog>
 
 </div>
