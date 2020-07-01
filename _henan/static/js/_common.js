@@ -103,7 +103,7 @@ layui.use([
 
     // 小于IE9提示
     let ieVersion = getIEVersion();
-    if (ieVersion < 9) {
+    if (ieVersion > 0  && ieVersion < 9) {
         layer.alert("注册功能不支持IE8浏览器, 请使用Chrome浏览器或使用360、QQ、搜狗等国产浏览器并切换至极速模式");
         return;
     }
@@ -155,10 +155,12 @@ const vueInstance = new Vue({
   destroyed() {
     timer && clearInterval(timer)
   },
-  methods: {
+  computed: {
     shouldDisableVerifyCode () {
       return !this.loginForm.mobileNo || this.countdown > 0
     },
+  },
+  methods: {
     getVerifyCodeTip () {
       return (this.countdown > 0) ? `倒计时${this.countdown}s` : '发送验证码'
     },

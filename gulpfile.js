@@ -88,7 +88,8 @@ gulp.task('01-build-dev', function () {
           'compileLess', 'compileJS'],
 
         // 4.开启浏览器同步
-        'devSync'
+        'devSync',
+        // 'watchChange' // 仅监视文件修改
     );
 });
 
