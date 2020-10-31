@@ -6,14 +6,14 @@
   "scripts": {
     "install:cnpm": "cnpm install",
     "remove": "rimraf node_modules",
-    "clean:henan": "set SYS_NAME=henan && gulp 00-clean-dist",
-    "dev:henan": "set SYS_NAME=henan && gulp 01-build-dev",
-    "build:henan": "set SYS_NAME=henan && gulp 03-build-dist",
-    "cssWatch:henan": "set SYS_NAME=henan && gulp 02-css-job",
-    "sprite:henan": "set SYS_NAME=henan && gulp 05-make-sprite",
-    "imagesOptimize:henan": "set SYS_NAME=henan && gulp 06-images-optimize",
-    "fontSpider:henan": "set SYS_NAME=henan && gulp 07-font-spider",
-    "sftpDist:henan": "set SYS_NAME=henan && gulp 09-sftp-dist"
+    "clean:demo": "set SYS_NAME=demo && gulp 00-clean-dist",
+    "dev:demo": "set SYS_NAME=demo && gulp 01-build-dev",
+    "build:demo": "set SYS_NAME=demo && gulp 03-build-dist",
+    "cssWatch:demo": "set SYS_NAME=demo && gulp 02-css-job",
+    "sprite:demo": "set SYS_NAME=demo && gulp 05-make-sprite",
+    "imagesOptimize:demo": "set SYS_NAME=demo && gulp 06-images-optimize",
+    "fontSpider:demo": "set SYS_NAME=demo && gulp 07-font-spider",
+    "sftpDist:demo": "set SYS_NAME=demo && gulp 09-sftp-dist"
   },
   "author": "luo0412",
   "devDependencies": {

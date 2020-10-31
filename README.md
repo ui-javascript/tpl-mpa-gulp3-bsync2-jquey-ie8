@@ -49,7 +49,7 @@
 └─templates
 ```
 
-![项目结构说明](__doc/category.png)  
+![项目结构说明](public/assets/category.png)  
 
 # TODO
 
@@ -137,7 +137,7 @@ less要编译输出的文件`下划线`开头
 
 # 雪碧图
 
-![](__doc/how-to-use-sprite.png)    
+![](public/assets/how-to-use-sprite.png)    
 
 
 ```
@@ -165,7 +165,7 @@ sprite -> dev(需要重启)
 "fontSpider:table": "set SYS_NAME=table && gulp 07-font-spider"
 ```
 
-![](__doc/how-to-use-font.png) 
+![](public/assets/how-to-use-font.png) 
     
 # pwa
 
